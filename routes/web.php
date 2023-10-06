@@ -28,3 +28,7 @@ Route::get('/mahasiswa', function () {
     return view('universitas.mahasiswa')->with('mahasiswa', $array_nama);
 });
 
+//routes template admin
+Route::get('/admin', function () {
+    return view('dashboard');
+});

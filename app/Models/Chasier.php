@@ -5,11 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Chasier extends Model
 {
     use HasFactory;
 
-    protected $table = 'categories';
-
-    protected $fillable = ['name'];
+    protected $table = 'chasiers';
+    protected $fillable = ['name', 'phone', 'age'];
 }

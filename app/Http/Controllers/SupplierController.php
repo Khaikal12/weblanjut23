@@ -30,4 +30,20 @@ class SupplierController extends Controller
         Supplier::create($request->all());
         return to_route('supplier-index');
     }
+
+    public function delete($id){
+        Supplier::find($id)->delete();
+        return to_route('supplier-index');
+    }
+
+    public function edit($id){
+        $data = Supplier::find($id);
+        return view('supplier.edit', compact('data'));
+    }
+
+    public function update(Request $request, $id){
+
+        Supplier::find($id)->update($request->all());
+        return to_route('supplier-index');
+    }
 }

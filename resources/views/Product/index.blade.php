@@ -1,25 +1,24 @@
 @extends('layout.be.template')
-@section('title', 'Data Supplier ')
+@section('title', 'Data Product')
 
 @section('content')
     <div class="container px-4 mt-4">
         <div class="row">
             <div class="col-md-12">
-                <a href="{{ route('supplier-create') }}" class="btn btn-primary mb-3">
+                <a href="{{ route('products.create') }}" class="btn btn-primary mb-3">
                     <i class="fas fa-plus"></i>Tambah Data
                 </a>
                 <div class="card">
-                    <div class="card-header" style="font-size: 20px; text-align: center"><strong>Data Supplier</strong></div>
+                    <div class="card-header" style="font-size: 20px; text-align: center"><strong>Data Product</strong></div>
                     <div class="card-body">
                         <table class="table table-bordered table-hover">
                             <thead>
                                 <tr style="text-align: center">
                                     <th>No</th>
-                                    <th>Nama PT</th>
-                                    <th>Nama Ketua</th>
-                                    <th>Nomor Kontak</th>
-                                    <th>Alamat</th>
-                                    <th>Tanggal</th>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                    <th>Price</th>
+                                    <th>Category</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -27,17 +26,16 @@
                                 @foreach ($data as $row)
                                     <tr style="text-align: center">
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $row->nama_pt }}</td>
-                                        <td>{{ $row->nama_ketua }}</td>
-                                        <td>{{ $row->nomor_kontak }}</td>
-                                        <td>{{ $row->alamat }}</td>
-                                        <td>{{ $row->created_at }}</td>
+                                        <td>{{ $row->name }}</td>
+                                        <td>{{ $row->description }}</td>
+                                        <td>{{ $row->price }}</td>
+                                        <td>{{ $row->category->name }}</td>
                                         <td>
-                                            <form method="POST" action="{{ route('supplier-delete', $row->id) }}">
+                                            <form method="POST" action="{{ route('products.destroy', $row->id) }}">
                                                 @csrf
                                                 @method('delete')
                                                 <input type="submit" value="Delete" class="btn btn-danger">
-                                                <a href="{{ route('supplier-edit', $row->id) }}"
+                                                <a href="{{ route('products.edit', $row->id) }}"
                                                     class="btn btn-warning">Edit</a>
                                             </form>
                                         </td>

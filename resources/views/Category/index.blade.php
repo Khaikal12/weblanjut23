@@ -25,7 +25,15 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $row->name }}</td>
                                         <td>{{ $row->created_at }} </td>
-                                        <td>Update | Delete</td>
+                                        <td>
+                                            <form method="POST" action="{{ route('category-delete', $row->id) }}">
+                                                @csrf
+                                                @method('delete')
+                                                <input type="submit" value="Delete" class="btn btn-danger">
+                                                <a href="{{ route('category-edit', $row->id) }}"
+                                                    class="btn btn-warning">Edit</a>
+                                            </form>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
